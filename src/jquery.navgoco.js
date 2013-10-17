@@ -67,7 +67,9 @@
 				sub = sub.length > 0 ? sub : false;
 				self.options.onClickBefore.call(this, event, sub);
 				if (sub) {
-					event.preventDefault();
+					if (!self.options.clickOnParent) {
+						event.preventDefault();
+					}
 					self._toggle(sub, sub.is(":hidden"));
 					self._save();
 				} else {
@@ -283,6 +285,7 @@
 		caret: '<span class="caret"></span>',
 		accordion: false,
 		openClass: 'open',
+		clickOnParent: false,
 		save: true,
 		cookie: {
 			name: 'navgoco',
