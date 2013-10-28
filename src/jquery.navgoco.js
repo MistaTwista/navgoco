@@ -67,7 +67,7 @@
 				sub = sub.length > 0 ? sub : false;
 				self.options.onClickBefore.call(this, event, sub);
 				if (sub) {
-					if (!self.options.clickOnParent) {
+					if (!self.options.clickOnParent  || $(this).parent().hasClass(self.options.openClass)) {
 						event.preventDefault();
 					}
 					self._toggle(sub, sub.is(":hidden"));
